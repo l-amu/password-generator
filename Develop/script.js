@@ -28,7 +28,7 @@ function generatePassword() {
  }
 
  function userOptions() {
-  var askLength = Number(prompt("How many characters would you like your password? Choose between 8 and 128"),10)
+  var askLength = Number(prompt("How many characters would you like your password? Choose between 8 and 128"),10);
   console.log("-----: ", length);
   if (askLength < 8) {
       alert("You must choose between 8 and 128");
@@ -50,7 +50,7 @@ function generatePassword() {
     return null;
   } 
   // when user chooses every critrea
-  else if (gotNumber === true && gotSymbols === true && gotUpperCase === true && gotLowerCase === true) {
+  if (gotNumber === true && gotSymbols === true && gotUpperCase === true && gotLowerCase === true) {
     randomizePass(); 
   }
   // choices based on RandomNumber
@@ -100,7 +100,13 @@ function generatePassword() {
     choices = RandomNumber.concat(RandomLowerCase);
   }
   
-  
+//   if (gotNumber) {
+//     choices = choices.concat(RandomNumber);
+// }
+
+// if (gotSymbols) {
+//     choices = choices.concat(RandomSymbol);
+// }
 console.log(gotNumber);
 // whatever the user chooses
 var password = [];
