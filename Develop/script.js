@@ -54,49 +54,49 @@ function generatePassword() {
   }
   // choices based on RandomNumber
   else if (gotNumber === true && gotSymbols === false && gotUpperCase === false && gotLowerCase === false) {
-    choices = RandomNumber ;
+    choices = RandomNumber;
   }
   else if (gotNumber === true && gotSymbols === true && gotUpperCase === false && gotLowerCase === false) {
-    choices = RandomNumber + RandomSymbol;
+    choices = RandomNumber.concat(RandomSymbol);
   }
   else if (gotNumber === true && gotSymbols === true && gotUpperCase === false && gotLowerCase === true) {
-    choices = RandomNumber + RandomLowerCase + RandomSymbol;
+    choices = RandomNumber.concat(RandomLowerCase, RandomSymbol);
   }
   else if (gotNumber === true && gotSymbols === true && gotUpperCase === true && gotLowerCase === false) {
-    choices = RandomNumber + RandomSymbol + RandomUpperCase; 
+    choices = RandomNumber.concat(RandomSymbol, RandomUpperCase); 
   }
   // choices based on RandomSymbol
   else if (gotNumber === false && gotSymbols === true && gotUpperCase === false && gotLowerCase === false) {
     choices = RandomSymbol;
   }
   else if (gotNumber === false && gotSymbols === true && gotUpperCase === true && gotLowerCase === false) {
-    choices = RandomSymbol + RandomUpperCase;
+    choices = RandomSymbol.concat(RandomUpperCase);
   }
   else if (gotNumber === false && gotSymbols === true && gotUpperCase === true && gotLowerCase === true) {
-    choices = RandomSymbol + RandomLowerCase + RandomUpperCase; 
+    choices = RandomSymbol.concat(RandomLowerCase, RandomUpperCase); 
   }
   else if (gotNumber === false && gotSymbols === true && gotUpperCase === false && gotLowerCase === true) {
-    choices = RandomSymbol + RandomLowerCase;
+    choices = RandomSymbol.concat(RandomLowerCase);
   }
   // choices based on gotUpperCase
   else if (gotNumber === false && gotSymbols === false && gotUpperCase === true && gotLowerCase === false) {
     choices = RandomUpperCase; 
   }
   else if (gotNumber === true && gotSymbols === false && gotUpperCase === true && gotLowerCase === true) {
-    choices = RandomNumber + RandomUpperCase + RandomLowerCase; 
+    choices = RandomNumber.concat(RandomUpperCase + RandomLowerCase); 
   }
   else if (gotNumber === true && gotSymbols === false && gotUpperCase === true && gotLowerCase === false) {
-    choices = RandomNumber + RandomUpperCase;
+    choices = RandomNumber.concat(RandomUpperCase);
   }
   else if (gotNumber === false && gotSymbols === false && gotUpperCase === true && gotLowerCase === true) {
-    choices = RandomLowerCase + RandomUpperCase;
+    choices = RandomLowerCase.concat(RandomUpperCase);
   }
   // choices based on gotLowerCase
   else if (gotNumber === false && gotSymbols === false && gotUpperCase === false && gotLowerCase === true) {
     choices = RandomLowerCase;
   }
   else if (gotNumber === true && gotSymbols === false && gotUpperCase === false && gotLowerCase === true) {
-    choices = RandomNumber + RandomLowerCase;
+    choices = RandomNumber.concat(RandomLowerCase);
   }
   
   
