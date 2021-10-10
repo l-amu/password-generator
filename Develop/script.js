@@ -1,5 +1,6 @@
 // Assignment code here
-
+let enter;
+let psswordLength;
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -8,7 +9,7 @@ var generateBtn = document.querySelector("#generate");
   let RandomLowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y","z"];
   let RandomUpperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y","Z"];
   let RandomSymbol  = [",", "~", ",", "`" ,"!", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "[", "}", "]", "|", ":" ,",", ";", ",", "'", "<", "=", ">", ".", "?", ",", "/"];
-  var choices;
+  
 function generatePassword() {
       userOptions();     
       // why do we need return in here?   
@@ -26,14 +27,14 @@ function generatePassword() {
  }
 
  function userOptions() {
-  var length = Number(prompt("How many characters would you like your password? Choose between 8 and 128"),10)
+  var psswordLength = Number(prompt("How many characters would you like your password? Choose between 8 and 128"),10)
   console.log("-----: ", length);
-  if (length < 8) {
-      alert("invalid input");
+  if (psswordLength < 8) {
+      alert("You must choose between 8 and 128");
       return null;
-  } 
-  if (length > 128) {
-   alert("invalid input");
+  }
+  if (psswordLength > 128) {
+   alert("You must choose between 8 and 128");
    return null;
   } 
 
@@ -42,28 +43,82 @@ function generatePassword() {
   var gotUpperCase = confirm("click ok if you want add uppercase");
   var gotLowerCase = confirm("click ok if you want add lowercase");
   
-  // response where user doesn't choose any critrea
+  // when user doesn't choose any critrea
   if (gotNumber === false && gotSymbols === false && gotUpperCase === false && gotLowerCase === false) {
     alert("choose at least one criteria")
+    return null;
   } 
-  // reposne when user chooses every critrea
+  // when user chooses every critrea
   else if (gotNumber === true && gotSymbols === true && gotUpperCase === true && gotLowerCase === true) {
     randomizePass(); 
   }
-  else if (gotNumber === true) {
-    choices = RandomNumber;
+  // choices based on RandomNumber
+  else if (gotNumber === true && gotSymbols === false && gotUpperCase === false && gotLowerCase === false) {
+    psswordLength = RandomNumber ;
   }
-
-  var userCiteria = {
-    length: length,
+  else if (gotNumber === true && gotSymbols === true && gotUpperCase === false && gotLowerCase === false) {
+    psswordLength = RandomNumber + RandomSymbol;
+  }
+  else if (gotNumber === true && gotSymbols === true && gotUpperCase === false && gotLowerCase === true) {
+    psswordLength = RandomNumber + RandomLowerCase + RandomSymbol;
+  }
+  else if (gotNumber === true && gotSymbols === true && gotUpperCase === true && gotLowerCase === false) {
+    psswordLength = RandomNumber + RandomSymbol + RandomUpperCase; 
+  }
+  // choices based on RandomSymbol
+  else if (gotNumber === false && gotSymbols === true && gotUpperCase === false && gotLowerCase === false) {
+    psswordLength = RandomSymbol;
+  }
+  else if (gotNumber === false && gotSymbols === true && gotUpperCase === true && gotLowerCase === false) {
+    psswordLength = RandomSymbol + RandomUpperCase;
+  }
+  else if (gotNumber === false && gotSymbols === true && gotUpperCase === true && gotLowerCase === true) {
+    psswordLength = RandomSymbol + RandomLowerCase + RandomUpperCase; 
+  }
+  else if (gotNumber === false && gotSymbols === true && gotUpperCase === false && gotLowerCase === true) {
+    psswordLength = RandomSymbol + RandomLowerCase;
+  }
+  // choices based on gotUpperCase
+  else if (gotNumber === false && gotSymbols === false && gotUpperCase === true && gotLowerCase === false) {
+    psswordLength = RandomUpperCase; 
+  }
+  else if (gotNumber === true && gotSymbols === false && gotUpperCase === true && gotLowerCase === true) {
+    psswordLength = RandomNumber + RandomUpperCase + RandomLowerCase; 
+  }
+  else if (gotNumber === true && gotSymbols === false && gotUpperCase === true && gotLowerCase === false) {
+    psswordLength = RandomNumber + RandomUpperCase;
+  }
+  else if (gotNumber === false && gotSymbols === false && gotUpperCase === true && gotLowerCase === true) {
+    psswordLength = RandomLowerCase + RandomUpperCase;
+  }
+  // choices based on gotLowerCase
+  else if (gotNumber === false && gotSymbols === false && gotUpperCase === false && gotLowerCase === true) {
+    psswordLength = RandomLowerCase;
+  }
+  else if (gotNumber === true && gotSymbols === false && gotUpperCase === false && gotLowerCase === true) {
+    psswordLength = RandomNumber + RandomLowerCase;
+  }
+  
+  
+console.log(gotNumber);
+// whatever the user chooses
+var password = [];
+console.log(password)
+for (var i = 0; i < enter; i++) {
+  var pickChoices = length[Math.floor(Math.random() * psswordLength.length)];
+  password.push(pickChoices);
+}
+  var userCiteriaInput = {
+    psswordLength: psswordLength,
     gotNumber: gotNumber,
     gotSymbols: gotSymbols,
     gotUpperCase: gotUpperCase,
     gotLowerCase: gotLowerCase,
   }
   // array.push("userCiteria");
+  
 
-  return userCiteria;
+  return userCiteriaInput;
 
 
 
