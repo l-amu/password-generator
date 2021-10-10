@@ -14,8 +14,7 @@ var generateBtn = document.querySelector("#generate");
 function generatePassword() {
       userOptions();     
       // why do we need return in here?   
-        return randomizePass();
-    
+        return randomizePass();   
  };
 
  function randomizePass() {
@@ -25,11 +24,11 @@ function generatePassword() {
   let CharacterTypeThree = RandomUpperCase[Math.floor(Math.random() * RandomUpperCase.length)];
   let CharacterTypeFour = RandomSymbol[Math.floor(Math.random() * RandomSymbol.length)];
   return CharacterTypeOne + CharacterTypeTwo +CharacterTypeThree + CharacterTypeFour;
- }
+ };
 
  function userOptions() {
   var askLength = Number(prompt("How many characters would you like your password? Choose between 8 and 128"),10);
-  console.log("-----: ", length);
+  console.log("-----: ", askLength);
   if (askLength < 8) {
       alert("You must choose between 8 and 128");
       return null;
@@ -38,7 +37,7 @@ function generatePassword() {
    alert("You must choose between 8 and 128");
    return null;
   } 
-  
+
   var gotNumber = confirm("click ok if you want add number");
   var gotSymbols = confirm("click ok if you want add symbols");
   var gotUpperCase = confirm("click ok if you want add uppercase");
@@ -99,7 +98,7 @@ function generatePassword() {
   else if (gotNumber === true && gotSymbols === false && gotUpperCase === false && gotLowerCase === true) {
     choices = RandomNumber.concat(RandomLowerCase);
   }
-  
+  // suggested layout
 //   if (gotNumber) {
 //     choices = choices.concat(RandomNumber);
 // }
@@ -107,6 +106,12 @@ function generatePassword() {
 // if (gotSymbols) {
 //     choices = choices.concat(RandomSymbol);
 // }
+// if (gotLowerCase) {
+//       choices = choices.concat(RandomLowerCase);
+//   }
+// if (gotUpperCase) {
+//         choices = choices.concat(RandomUpperCase);
+//   }
 console.log(gotNumber);
 // whatever the user chooses
 var password = [];
@@ -115,6 +120,7 @@ console.log(choices)
 for (var i = 0; i < askLength; i++) {
   var pickChoices = choices[Math.floor(Math.random() * choices.length)];
   password.push(pickChoices);
+  console.log(pickChoices);
 }
   var userCiteriaInput = {
     askLength: askLength,
@@ -124,28 +130,14 @@ for (var i = 0; i < askLength; i++) {
     gotLowerCase: gotLowerCase,
   }
   // array.push("userCiteria");
-  
-
   return userCiteriaInput;
-
-
-
-
-
  };
-
-
- 
-  
-
-
 
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   console.log(passwordText);
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
