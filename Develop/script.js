@@ -120,8 +120,9 @@ console.log(choices)
 for (var i = 0; i < askLength; i++) {
   var pickChoices = choices[Math.floor(Math.random() * choices.length)];
   password.push(pickChoices);
-  console.log(pickChoices);
+  console.log("pick choice", pickChoices);
 }
+
   var userCiteriaInput = {
     askLength: askLength,
     gotNumber: gotNumber,
