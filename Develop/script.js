@@ -1,6 +1,7 @@
 // Assignment code here
 var enter;
 var choices;
+var choices = [];
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -104,7 +105,7 @@ console.log(gotNumber);
 // whatever the user chooses
 var password = [];
 
-console.log(password)
+console.log(choices)
 for (var i = 0; i < askLength; i++) {
   var pickChoices = choices[Math.floor(Math.random() * choices.length)];
   password.push(pickChoices);
