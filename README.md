@@ -1,5 +1,3 @@
 <<<<<<< HEAD
-# Password Generator Starter Code
-=======
-# password-generator
->>>>>>> f191188753f312e69002e9f47e6587a1d9ad0f9f
+# Password Generator 
+In this assignment we were tasked to create a password generator. In this challenge I learned many things about javascript, but most importantly how to manipuilate function to do my bidding.
