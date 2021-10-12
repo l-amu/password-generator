@@ -12,10 +12,11 @@ var generateBtn = document.querySelector("#generate");
   let RandomSymbol  = [",", "~", ",", "`" ,"!", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "[", "}", "]", "|", ":" ,",", ";", ",", "'", "<", "=", ">", ".", "?", ",", "/"];
   
 function generatePassword() {
-      userOptions();     
+        userOptions();     
       // why do we need return in here?   
-        return randomizePass();   
- };
+        // return randomizePass();  
+        // randomizePass(); 
+      };
 
  function randomizePass() {
   let CharacterTypeOne = RandomNumber[Math.floor(Math.random() * RandomNumber.length)];
@@ -23,9 +24,11 @@ function generatePassword() {
   // how to add this without Math.floor?
   let CharacterTypeThree = RandomUpperCase[Math.floor(Math.random() * RandomUpperCase.length)];
   let CharacterTypeFour = RandomSymbol[Math.floor(Math.random() * RandomSymbol.length)];
+  
   return CharacterTypeOne + CharacterTypeTwo +CharacterTypeThree + CharacterTypeFour;
  };
 
+// holds everything ragrading generated password inlcludin user length 
  function userOptions() {
   var askLength = Number(prompt("How many characters would you like your password? Choose between 8 and 128"),10);
   console.log("-----: ", askLength);
@@ -42,7 +45,8 @@ function generatePassword() {
   var gotSymbols = confirm("click ok if you want add symbols");
   var gotUpperCase = confirm("click ok if you want add uppercase");
   var gotLowerCase = confirm("click ok if you want add lowercase");
-  
+
+  // all if are for choices from user
   // when user doesn't choose any critrea
   if (gotNumber === false && gotSymbols === false && gotUpperCase === false && gotLowerCase === false) {
     alert("choose at least one criteria")
@@ -55,6 +59,7 @@ function generatePassword() {
   // choices based on RandomNumber
   else if (gotNumber === true && gotSymbols === false && gotUpperCase === false && gotLowerCase === false) {
     choices = RandomNumber;
+    console.log(RandomNumber);
   }
   else if (gotNumber === true && gotSymbols === true && gotUpperCase === false && gotLowerCase === false) {
     choices = RandomNumber.concat(RandomSymbol);
@@ -122,17 +127,24 @@ for (var i = 0; i < askLength; i++) {
   password.push(pickChoices);
   console.log("pick choice", pickChoices);
 }
+console.log(password);
 
-  var userCiteriaInput = {
-    askLength: askLength,
-    gotNumber: gotNumber,
-    gotSymbols: gotSymbols,
-    gotUpperCase: gotUpperCase,
-    gotLowerCase: gotLowerCase,
-  }
+  // var userCiteriaInput = {
+  //   askLength: askLength,
+  //   gotNumber: gotNumber,
+  //   gotSymbols: gotSymbols,
+  //   gotUpperCase: gotUpperCase,
+  //   gotLowerCase: gotLowerCase,
+  // }
+  var passwordText = document.querySelector("#password");
+  console.log(passwordText);
+  passwordText.value = password.join("")
+
+  // return password;
   // array.push("userCiteria");
   return userCiteriaInput;
  };
+ 
 
 function writePassword() {
   var password = generatePassword();
@@ -142,4 +154,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
